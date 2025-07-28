@@ -11,19 +11,19 @@ ll Pow(int n) {
         ans = (ans * 31) % 1234567891 ;
         n -- ;
     }
-    return ans ;
+    return ans % 1234567891 ;
 }
 
 int main() {
 
     cin.tie(0)->sync_with_stdio(false) ;
 
-    int n, ans = 0 ;
+    ll n, ans = 0 ;
     string s ;
     cin >> n >> s ;
 
     for ( int i = 0 ; i < n ; i ++ ) {
-        ans += ((s[i] - 'a' + 1) * Pow(i)) % 12334567891 ;
+        ans += ((s[i] - 'a' + 1) * Pow(i)) % 1234567891 ;
     }
 
     cout << ans % 1234567891 ;
