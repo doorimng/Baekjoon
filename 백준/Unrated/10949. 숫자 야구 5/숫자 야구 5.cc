@@ -9,7 +9,7 @@ int main() {
 
     cin.tie(0)->sync_with_stdio(false) ;
 
-    cout << "8471" ;
+    cout << "1387" ;
 
     return 0 ;
 }
