@@ -19,8 +19,6 @@ void BFS() {
         int cnt = qu.front().second ;
         qu.pop() ;
 
-        // cout << temp << " -> " << cnt << " : " << cityInfo[temp] << "\n" ;
-        
         if ( cnt > s ) continue ;
 
         visited[temp] = 1 ;
@@ -33,18 +31,6 @@ void BFS() {
         }
     }
 }
-
-// void DFS(int n, int cnt) {
-//     if ( cnt >= s ) return ;
-//     for ( int x : v[n] ) {
-//         if ( !visited[x] ) {
-//             visited[x] = 1 ;
-//             if ( cityInfo[x] ) cityInfo[x] = 1 ;
-//             DFS(x, cnt+1) ;
-//             visited[x] = 0 ;
-//         }
-//     }
-// }
 
 priority_queue <pii, vector <pii>, greater<pii>> pq ;
 void dijk() {
@@ -80,7 +66,6 @@ int main(void){
 
     cin >> n >> m >> k >> s >> p >> q ;
 
-    // vector <int> zombies ;
     cityInfo.resize(n+1, 2) ;
     v.resize(n+1, vector <int> (0)) ;
     visited.resize(n+1, 0) ;
@@ -90,7 +75,6 @@ int main(void){
         int x ;
         cin >> x ;
 
-        // zombies.push_back(x) ;
         visited[x] = 1 ;
         qu.push({x, 0}) ;
         cityInfo[x] = 0 ;
@@ -105,16 +89,11 @@ int main(void){
     }
 
     BFS() ;
-    // for ( int i = 0 ; i < zombies.size() ; i ++ ) DFS(zombies[i], 0) ;
 
     fill(visited.begin(), visited.end(), 0) ;
     pq.push({0, 1}) ;
     ans[1] = 0 ;
     dijk() ;
-
-    // for ( int i = 1 ; i <= n ; i ++ ) {
-    //     cout << i << " : " << cityInfo[i] << "\n" ;
-    // }
 
     cout << ans[n] - ((cityInfo[n] == 1) ? q : p) ;
 
