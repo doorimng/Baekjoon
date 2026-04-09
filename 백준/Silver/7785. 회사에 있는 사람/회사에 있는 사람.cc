@@ -1,29 +1,30 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <set>
 
 using namespace std ;
-typedef long long ll ;
-typedef pair <int, int> pii ;
-#define INF INT_MAX
 
 int main() {
-    
+
     cin.tie(0)->sync_with_stdio(false) ;
+
+    map <string, int, greater<string>> mp ;
 
     int n ;
     cin >> n ;
-    
-    map <string, int> mp ;
     for ( int i = 0 ; i < n ; i ++ ) {
         string a, b ;
         cin >> a >> b ;
 
         if ( b == "enter" ) mp[a] = 1 ;
-        else mp[a] = 0 ;
+        else mp.erase(a) ;
     }
 
-    for ( auto it = --mp.end() ; it != --mp.begin() ; it -- ) {
-        if ( it->second ) cout << it->first << "\n" ;
+    for ( auto it = mp.begin() ; it != mp.end() ; it ++ ) {
+        cout << it->first << "\n" ;
     }
-
+    
     return 0 ;
 }
