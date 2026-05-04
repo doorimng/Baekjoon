@@ -1,20 +1,17 @@
 #include <bits/stdc++.h>
 
-using namespace std ;
+using namespace std;
+
+int temp;
+bool cmp(string a, string b) {
+    if ( a[temp] != b[temp] ) return a[temp] < b[temp] ;
+    else return a < b ;
+}
 
 vector <string> solution(vector <string> v, int n) {
-    vector <pair <char, string>> temp ;
 
-    for ( string s: v ) {
-        temp.push_back({s[n], s}) ;
-    }
-    
-    sort(temp.begin(), temp.end()) ;
-    
-    vector <string> ans;
-    for ( int i = 0 ; i < temp.size() ; i ++ ) {
-        ans.push_back(temp[i].second) ;
-    }
+    temp = n ;
+    sort(v.begin(), v.end(), cmp) ;
 
-    return ans;
+    return v ;
 }
